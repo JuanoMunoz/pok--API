@@ -10,7 +10,9 @@ function showPokemon(section) {
 function cantidadPokes() {
     const container = document.getElementById("container");
     container.innerHTML = "";
-    const cantidad = document.getElementById("mostrarPokes").value || 0;
+    const cantidad = document.getElementById("mostrarPokes").value == "" ? 0 : document.getElementById("mostrarPokes").value;
+    if (cantidad == 0) return;
+    console.log(cantidad);
     fetch(`https://pokeapi.co/api/v2/pokemon?limit=${cantidad}&offset=0`).then(function (response) {
         return response.json()
     }).then(function (data) {
